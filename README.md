@@ -48,7 +48,6 @@ initGraph(links, node_labels, edge_labels, "graphArea", 640, 480, "A", 1, 0);
 ```
 
 ## Library details
-- The file consts.js already contains a list of Uniprot ID with their compartments. It also contains a list of complexes. This file can be edited as you wish.
 
 ### initGraph(links, node_labels, edge_labels, htmlPageDiv, width, height, seedNodesList, signalingOrPPI, hideToolBar);
 - *links*: a json object containing the graph edges, and thus nodes.
@@ -61,3 +60,6 @@ initGraph(links, node_labels, edge_labels, "graphArea", 640, 480, "A", 1, 0);
 
 ### setNodesColor(htmlPageDiv, idsList, color);
 It can be used to highlight specific nodes after the visualization has been initialized. It can be used to highlight or animate the graph.
+
+### Extras
+The file *constants.js* already contains a list of Uniprot ID with their compartments. It also contains a list of complexes. This file can be edited as you wish.
