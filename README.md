@@ -1,4 +1,4 @@
-# SPV - Signaling Pathway Visualizer_v1.0
+# SPV - Signaling Pathway Visualizer v1.0
 
 ## Overview
 This is a Javascript library build on top of D3.js to visualize molecular interactions with particular attention to signaling pathways.
