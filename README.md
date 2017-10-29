@@ -60,11 +60,13 @@ We defined the following markers:
 1, 2 and 3 can be mixed with line types, for example transcriptional-activation, transcriptional-inhibition
 
 The following image shows aldready defined edges
+
 ![Edge types](docimgs/edgesandmarkers.png)
 
 ### Already Defined Objects
 
 List of possible values for the type attribute
+
 ![Edge types](docimgs/elements.png)
 
 ### initGraph(links, node_labels, edge_labels, htmlPageDiv, width, height, seedNodesList, signalingOrPPI, hideToolBar);
