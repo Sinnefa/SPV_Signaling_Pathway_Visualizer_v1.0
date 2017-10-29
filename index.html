@@ -17,7 +17,7 @@
     <script>
 
             var links = [
-                
+
                 {source: "Protein A", idA: "A", typeA: "protein", target: "Protein B", idB: "B", typeB: "protein", type: "none", score: 0.1},
                 {source: "Protein A", idA: "A", typeA: "protein", target: "NoHuman", idB: "C", typeB: "nohuman", type: "activation", score: 0.2},
                 {source: "Protein A", idA: "A", typeA: "protein", target: "Chemical", idB: "D", typeB: "chemical", type: "inhibition", score: 0.3},
@@ -31,10 +31,29 @@
                 {source: "KMT2D", idA: "O14686", typeA: "protein", target: "WDR5", idB: "P61964", typeB: "protein", type: "complex-formation", score: 0.6},
                 
                 
-                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein D", idB: "K", typeB: "protein", type: "activation", score: 0.1},
-                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein E", idB: "L", typeB: "protein", type: "bind-activation", score: 0.1},
-                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein F", idB: "O", typeB: "protein", type: "undefined-activation", score: 0.1},
-                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein G", idB: "N", typeB: "protein", type: "transcription-activation", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein K (activation)", idB: "K", typeB: "protein", type: "activation", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein L (bind-activation)", idB: "L", typeB: "protein", type: "bind-activation", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein M (undefined-activation)", idB: "M", typeB: "protein", type: "undefined-activation", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein N (transcription-activation)", idB: "N", typeB: "protein", type: "transcription-activation", score: 0.1},
+
+		{source: "Protein C", idA: "J", typeA: "protein", target: "Protein O (inhibition)", idB: "O", typeB: "protein", type: "inhibition", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein P (bind-inhibition)", idB: "P", typeB: "protein", type: "bind-inhibition", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein Q (undefined-inhibition)", idB: "Q", typeB: "protein", type: "undefined-inhibition", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein R (transcription-inhibition)", idB: "R", typeB: "protein", type: "transcription-inhibition", score: 0.1},
+
+		{source: "Protein C", idA: "J", typeA: "protein", target: "Protein S (direct)", idB: "S", typeB: "protein", type: "direct", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein T (indirect)", idB: "T", typeB: "protein", type: "indirect", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein U (binding)", idB: "U", typeB: "protein", type: "binding", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein V (none)", idB: "V", typeB: "protein", type: "none", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein W (undefined)", idB: "W", typeB: "protein", type: "undefined", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein X (ppi)", idB: "X", typeB: "protein", type: "ppi", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein Y (complex-formation)", idB: "Y", typeB: "protein", type: "complex-formation", score: 0.1},
+
+		{source: "Protein C", idA: "J", typeA: "protein", target: "Protein Z (unknown)", idB: "Z", typeB: "protein", type: "unknown", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein AA (bind-unknown)", idB: "AA", typeB: "protein", type: "bind-unknown", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein AB (undefined-unknown)", idB: "AB", typeB: "protein", type: "undefined-unknown", score: 0.1},
+                {source: "Protein C", idA: "J", typeA: "protein", target: "Protein AC (transcription-unknown)", idB: "AC", typeB: "protein", type: "transcription-unknown", score: 0.1},
+
             
             ];
 

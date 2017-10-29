@@ -30,288 +30,288 @@ var red = "#FF3333";
 var transblue = "#0066CC";
 var transred = "#FF3333";
 
-var css = "\
-\
-path.link {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: #666;\
-	stroke-width: 2px;\
-}\
-path.link-undefined {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #666;\
-        stroke-width: 2px;\
-        stroke-dasharray: 10;\
-}\
-/* Unknown */ \
-path.link-unknown {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0;\
-        stroke: #777777;\
-        stroke-width: 2px;\
-}\
-path.link-bind-unknown {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0;\
-        stroke: #777777;\
-        stroke-width: 2px;\
-        stroke-dasharray:5 5;\
-}\
-path.link-undefined-unknown {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #777777;\
-        stroke-width: 2px;\
-        stroke-dasharray: 15 15;\
-}\
-path.link-transcription-unknown {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0;\
-        stroke: #77777766;\
-        stroke-width: 2px;\
-        stroke-dasharray:5 5;\
-}\
-/* Activations */ \
-path.link-activation {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0;\
-	stroke: " + blue + ";\
-	stroke-width: 2px;\
-}\
-path.link-bind-activation {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0;\
-	stroke: " + blue + ";\
-	stroke-width: 2px;\
-	stroke-dasharray:5 5;\
-}\
-path.link-undefined-activation {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: " + blue + ";\
-        stroke-width: 2px;\
-        stroke-dasharray: 15 15;\
-}\
-path.link-transcription-activation {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0;\
-        stroke: " + transblue + ";\
-        stroke-width: 2px;\
-        stroke-dasharray:5 5;\
-	stroke-opacity: 0.3;\
-}\
-/* Inhibitions */ \
-path.link-inhibition {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: " + red + ";\
-	stroke-width: 2px;\
-}\
-path.link-bind-inhibition {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: " + red + ";\
-	stroke-width: 2px;\
-	stroke-dasharray:5 5;\
-}\
-path.link-undefined-inhibition {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: " + red + ";\
-        stroke-width: 2px;\
-        stroke-dasharray: 15 15;\
-}\
-path.link-transcription-inhibition {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: " + transred + ";\
-        stroke-width: 2px;\
-        stroke-dasharray:5 5;\
-	stroke-opacity: 0.3;\
-}\
-/* Others */ \
-path.link-direct {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #000000;\
-        stroke-width: 2px;\
-}\
-path.link-indirect {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #000000;\
-        stroke-width: 2px;\
-        stroke-dasharray:8 8;\
-}\
-path.link-binding {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #000000;\
-        stroke-width: 2px;\
-        stroke-dasharray:3 3;\
-}\
-path.link-none {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #666;\
-        stroke-width: 2px;\
-}\
-path.link-ppi {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #0aa34a;\
-        stroke-width: 2px;\
-}\
-path.link-complex-formation {\
-        z-index:10000;\
-        fill: #ffffff;\
-        fill-opacity: 0.01;\
-        stroke: #0aa34a;\
-        stroke-width: 2px;\
-}\
-path.link-chemical-activation {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: " + blue + ";\
-	stroke-width: 2px;\
-	/*stroke-dasharray: 0,2 1;*/\
-}\
-path.link-chemical-inhibition {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: " + red + ";\
-	stroke-width: 2px;\
-	/*stroke-dasharray: 0,2 1;*/\
-}\
-path.link-smallmolecule-activation {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: " + blue + ";\
-	stroke-width: 2px;\
-	/*stroke-dasharray: 0,2 1;*/\
-}\
-path.link-smallmolecule-inhibition {\
-	z-index:10000;\
-	fill: #ffffff;\
-        fill-opacity: 0.01;\
-	stroke: " + red + ";\
-	stroke-width: 2px;\
-	/*stroke-dasharray: 0,2 1;*/\
-}\
-/* Nodes */ \
-.nohuman {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #FF9933;\
-	z-index:10000;\
-}\
-\
-.chemical {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #e1b68b;\
-	z-index:10000;\
-}\
-\
-.smallmolecule {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #ffc966;\
-	z-index:10000;\
-}\
-\
-.protein {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #99cc66;\
-	z-index:10000;\
-}\
-.complex {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #708ccd;\
-	z-index:10000;\
-}\
-.proteinfamily {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #ffffff;\
-	z-index:10000;\
-}\
-.phenotype {\
-	stroke: #000;\
-	stroke-width: 1px;\
-	fill: #99FF99;\
-	z-index:10000;\
-}\
-.stimulus {\
-        stroke: #000;\
-        stroke-width: 1px;\
-        fill: #FF9999;\
-        z-index:10000;\
-}\
-text {\
-	font: 10px sans-serif;\
-	pointer-events: none;\
-}\
-\
-text.shadow {\
-	stroke: #fff;\
-	stroke-width: 3px;\
-	stroke-opacity: .8;\
-}\
-.scroll-pane\
-{\
-	overflow: auto;\
-	color: #111;\
-	width: 100%;\
-	height: 100%;\
-}\
-.hull1 {\
-  fill: grey;\
-  stroke: grey;\
-  stroke-width: 15px;\
-  stroke-linejoin: round;\
-  opacity:0.3;\
-}\
-.hull2 {\
-  fill: red;\
-  stroke: red;\
-  stroke-width: 15px;\
-  stroke-linejoin: round;\
-  opacity:0.5;\
-}\
-.controlbar {\
-    padding:0px;\\n\
-}\
-.controlbar td {\
-    padding: 0px;\
-    border: 0px;\
-}\
+var css = "\n\
+\n\
+path.link {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: #666;\n\
+	stroke-width: 2px;\n\
+}\n\
+path.link-undefined {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #666;\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray: 10;\n\
+}\n\
+/* Unknown */ \n\
+path.link-unknown {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0;\n\
+        stroke: #777777;\n\
+        stroke-width: 2px;\n\
+}\n\
+path.link-bind-unknown {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0;\n\
+        stroke: #777777;\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray:5 5;\n\
+}\n\
+path.link-undefined-unknown {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #777777;\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray: 15 15;\n\
+}\n\
+path.link-transcription-unknown {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.1;\n\
+        stroke: #77777766;\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray:5 5;\n\
+}\n\
+/* Activations */ \n\
+path.link-activation {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0;\n\
+	stroke: " + blue + ";\n\
+	stroke-width: 2px;\n\
+}\n\
+path.link-bind-activation {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0;\n\
+	stroke: " + blue + ";\n\
+	stroke-width: 2px;\n\
+	stroke-dasharray:5 5;\n\
+}\n\
+path.link-undefined-activation {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: " + blue + ";\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray: 15 15;\n\
+}\n\
+path.link-transcription-activation {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0;\n\
+        stroke: " + transblue + ";\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray:5 5;\n\
+	stroke-opacity: 0.3;\n\
+}\n\
+/* Inhibitions */ \n\
+path.link-inhibition {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: " + red + ";\n\
+	stroke-width: 2px;\n\
+}\n\
+path.link-bind-inhibition {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: " + red + ";\n\
+	stroke-width: 2px;\n\
+	stroke-dasharray:5 5;\n\
+}\n\
+path.link-undefined-inhibition {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: " + red + ";\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray: 15 15;\n\
+}\n\
+path.link-transcription-inhibition {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: " + transred + ";\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray:5 5;\n\
+	stroke-opacity: 0.3;\n\
+}\n\
+/* Others */ \n\
+path.link-direct {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #000000;\n\
+        stroke-width: 2px;\n\
+}\n\
+path.link-indirect {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #000000;\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray:8 8;\n\
+}\n\
+path.link-binding {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #000000;\n\
+        stroke-width: 2px;\n\
+        stroke-dasharray:3 3;\n\
+}\n\
+path.link-none {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #666;\n\
+        stroke-width: 2px;\n\
+}\n\
+path.link-ppi {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #0aa34a;\n\
+        stroke-width: 2px;\n\
+}\n\
+path.link-complex-formation {\n\
+        z-index:10000;\n\
+        fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+        stroke: #0aa34a;\n\
+        stroke-width: 2px;\n\
+}\n\
+path.link-chemical-activation {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: " + blue + ";\n\
+	stroke-width: 2px;\n\
+	/*stroke-dasharray: 0,2 1;*/\n\
+}\n\
+path.link-chemical-inhibition {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: " + red + ";\n\
+	stroke-width: 2px;\n\
+	/*stroke-dasharray: 0,2 1;*/\n\
+}\n\
+path.link-smallmolecule-activation {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: " + blue + ";\n\
+	stroke-width: 2px;\n\
+	/*stroke-dasharray: 0,2 1;*/\n\
+}\n\
+path.link-smallmolecule-inhibition {\n\
+	z-index:10000;\n\
+	fill: #ffffff;\n\
+        fill-opacity: 0.01;\n\
+	stroke: " + red + ";\n\
+	stroke-width: 2px;\n\
+	/*stroke-dasharray: 0,2 1;*/\n\
+}\n\
+/* Nodes */ \n\
+.nohuman {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #FF9933;\n\
+	z-index:10000;\n\
+}\n\
+\n\
+.chemical {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #e1b68b;\n\
+	z-index:10000;\n\
+}\n\
+\n\
+.smallmolecule {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #ffc966;\n\
+	z-index:10000;\n\
+}\n\
+\n\
+.protein {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #99cc66;\n\
+	z-index:10000;\n\
+}\n\
+.complex {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #708ccd;\n\
+	z-index:10000;\n\
+}\n\
+.proteinfamily {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #ffffff;\n\
+	z-index:10000;\n\
+}\n\
+.phenotype {\n\
+	stroke: #000;\n\
+	stroke-width: 1px;\n\
+	fill: #99FF99;\n\
+	z-index:10000;\n\
+}\n\
+.stimulus {\n\
+        stroke: #000;\n\
+        stroke-width: 1px;\n\
+        fill: #FF9999;\n\
+        z-index:10000;\n\
+}\n\
+text {\n\
+	font: 10px sans-serif;\n\
+	pointer-events: none;\n\
+}\n\
+\n\
+text.shadow {\n\
+	stroke: #fff;\n\
+	stroke-width: 3px;\n\
+	stroke-opacity: .8;\n\
+}\n\
+.scroll-pane\n\
+{\n\
+	overflow: auto;\n\
+	color: #111;\n\
+	width: 100%;\n\
+	height: 100%;\n\
+}\n\
+.hull1 {\n\
+  fill: grey;\n\
+  stroke: grey;\n\
+  stroke-width: 15px;\n\
+  stroke-linejoin: round;\n\
+  opacity:0.3;\n\
+}\n\
+.hull2 {\n\
+  fill: red;\n\
+  stroke: red;\n\
+  stroke-width: 15px;\n\
+  stroke-linejoin: round;\n\
+  opacity:0.5;\n\
+}\n\
+.controlbar {\n\
+    padding:0px;\n\
+}\n\
+.controlbar td {\n\
+    padding: 0px;\n\
+    border: 0px;\n\
+}\n\
 ";
 
 /* CREATE MISSING BROWSER FUNCTIONS */

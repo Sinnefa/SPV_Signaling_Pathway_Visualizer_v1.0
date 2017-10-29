@@ -49,6 +49,18 @@ initGraph(links, node_labels, edge_labels, "graphArea", 640, 480, "A", 1, 0);
 
 ## Library details
 
+### Already Defined Edges
+
+We defined the following markers:
+1) A standard arrow for activations
+2) A T shaped arrow for inhibitions
+3) A circle for unknown effects
+4) A square for complex formation
+
+1, 2 and 3 can be mixed with line types, for example transcriptional-activation, transcriptional-inhibition
+
+![Edge types](docimgs/edgesandmarkers.png)
+
 ### initGraph(links, node_labels, edge_labels, htmlPageDiv, width, height, seedNodesList, signalingOrPPI, hideToolBar);
 - *links*: a json object containing the graph edges, and thus nodes.
 - *node_labels, edge_labels list*: arrays containing tool-tips to visualize on mouse click on edges and nodes. If empty *null* dynamical pages will be queried: *getUniprotDescription.php* and *getEvidence.php*.
