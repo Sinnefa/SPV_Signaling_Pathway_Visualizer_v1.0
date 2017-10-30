@@ -639,6 +639,14 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 .attr("id", "unknown");
         svg[div].append("svg:defs").append("marker")
                 .attr("id", "complex-formation");
+	svg[div].append("clipPath")
+		.attr("id", "clipRect")
+		.append("rect")
+		.attr("x", -50)
+		.attr("y", -50)
+                .attr("width", w+100)
+                .attr("height", h+100);
+	svg[div].attr("clip-path", "url(#clipRect)")
         var tooltip = d3.select("body")
                 .append("div")
                 .style("position", "absolute")
