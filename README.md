@@ -4,16 +4,16 @@
 This is a Javascript library build on top of D3.js to visualize molecular interactions with particular attention to signaling pathways.
 
 ## Installation
-1) Copy the js directory in your where you want within your website
-2) Add the following line in the webpage you want to add the visualizer in:
+1) Copy the js directory in where you want within your website
+2) Add the following line in the webpage you want to add the visualizer to:
 ```html
 <script>
   baseurl = ".";
 </script>
 <script src="./js/SPV_v1.0.js"></script>
 ```
-3) Set the variable baseurl to the url where you copied the js directory. This is to find tool bar images, you can change it.
-4) Add a <div></div> block to host the graphical representation of your network
+3) Set the variable <i>baseurl</i> to the url where you copied the js/ directory. This is to find tool bar images and extra Javascript libraries used by SPV.
+4) Add a ```html<div></div>``` block to host the graphical representation of your network
 ```html
 <center>
   <div id="graphArea" style="width:640px;height:480px;background:white;overflow:hidden;"></div>
