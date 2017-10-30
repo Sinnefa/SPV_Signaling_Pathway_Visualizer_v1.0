@@ -11,6 +11,7 @@ var selected = new Array();
 var elabels = new Array();
 var nlabels = new Array();
 var svg = new Array();
+var maingraph = new Array();
 var zoom = new Array();
 var forceArray = new Array();
 var text = new Array();
@@ -376,7 +377,7 @@ function dragended(d) {
 
 /************* MAIN *************/
 
-var nodescharge = 0;
+var nodescharge = Array();
 
 function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, signaling=1, hidetoolbar=0) {
         elabels[div] = (edge_labels);
@@ -384,7 +385,6 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         var links = JSON.parse(JSON.stringify(links_external));
         if (!original[div]) {
             original[div] = links_external.slice(0);
-            //links = filterStart(links);
         }
         selected[div] = new Array();
         var nodes = {};
@@ -413,7 +413,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         var distance = (h / Object.keys(nodes).length) + 5;
         if (distance < 35)
             distance = 35;
-        nodescharge = -600; 
+        nodescharge[div] = -600; 
         
         // Determining nucleus position proportional to graph and adapting other values
         var posNucleo = h + (h / 3);
@@ -422,11 +422,11 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         if (w < 600) {
             complexdx = -50;
             distance = 35;
-            if (nodescharge == 0)
-                nodescharge = -600; //-250
+            if (nodescharge[div] == 0)
+                nodescharge[div] = -600; //-250
         }
         if (!signaling) { // If we are visualizing plain PPI charge and distance are different
-            nodescharge = -900;
+            nodescharge[div] = -900;
             distance = 50;
         }
         
@@ -440,7 +440,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                     } else
                         return distance;
                 })
-                .charge(nodescharge)
+                .charge(nodescharge[div])
                 .on("tick", tick)
                 .friction(0.5);
         
@@ -458,13 +458,14 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                         <div style="line-height:0px;text-align:left;vertical-alignment:middle;padding:0em;height:' + topMenuHeight + 'px;background:gray;width:100%;font-family: \'Lucida Console\', Monaco, monospace;font-size:1em;">\n\
                             <table class="controlbar">\n\
                             <tr>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;margin-left:5px;height:25px;width:25px;padding:0px;" onclick="zoom[\'' + div + '\'].scale(1).translate([0, 0]);reset(forceArray[\'' + div + '\'],\'' + div + '\',w,h,'+signaling+');"><img alt="Reset layout" title="Reset layout" src="' + baseurl + '/js/refresh.png" border="0"/></button></td>\n\
                             <td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="capture(\'container' + div + '\',w,' + (h - topMenuHeight) + ')"><img alt="Save network" title="Save network" src="' + baseurl + '/js/camera.png" border="0"/></button></td>\n\
                             <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="exportNetwork(\'' + div + '\');"><img alt="Export network" title="Export network" src="' + baseurl + '/js/export.png" border="0"/></button></td>\n\
-                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="toggleScores()"/><img alt="Export network" title="Toggle scores" src="' + baseurl + '/js/score.png" border="0"/></button></td>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="toggleScores(\''+div+'\')"/><img alt="Export network" title="Toggle scores" src="' + baseurl + '/js/score.png" border="0"/></button></td>\n\
                             <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="hideLegend(\'' + div + '\')"><img alt="Toggle legend" title="Toggle legend" src="' + baseurl + '/js/legend.png" border="0"/></button></td>\n\
                             <td><span style="font-size:0.8em;font-family:\'Open Sans\',sans-serif;color:white"><b>Type:</b></span></td>\n\
                             <td>\n\
-                                <select id="interactionFilter" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;margin-right:5px;width:60px;height:26px" onchange="applyFilter(\'' + div + '\',w,h,\'' + extra + '\');">\n\
+                                <select id="interactionFilter'+div+'" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;margin-right:5px;width:60px;height:26px" onchange="applyFilter(\'' + div + '\',w,h,\'' + extra + '\',' + signaling + ',\'' + hidetoolbar + '\');">\n\
                                     <option value="" selected>All</option>\n\
                                     <option value="direct">Direct</option>\n\
                                     <option value="undefined">Indirect</option>\n\
@@ -479,7 +480,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                                 <span style="font-size:0.8em;font-family:\'Open Sans\',sans-serif;color:white"><b>Score:</b></span>\n\
                             </td>\n\
                             <td>\n\
-                                <select id="scoreFilter" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;px;width:40px;height:26px" onchange="applyFilter(\'' + div + '\',w,h,\'' + extra + '\');">\n\
+                                <select id="scoreFilter'+div+'" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;px;width:40px;height:26px" onchange="applyFilter(\'' + div + '\',w,h,\'' + extra + '\',' + signaling + ',' + hidetoolbar + ');">\n\
                                     <option value="0.0">0.0</option>\n\
                                     <option value="0.1">0.1</option>\n\
                                     <option value="0.2">0.2</option>\n\
@@ -496,7 +497,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                                 <span style="font-size:0.8em;font-family:\'Open Sans\',sans-serif;color:white"><b>Layout:</b></span>\n\
                             </td>\n\
                             <td>\n\
-                                <select id="forceFilter" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;px;width:60px;height:26px" onchange="applyForce(\'' + div + '\',w,h,\'' + extra + '\');">\n\
+                                <select id="forceFilter'+div+'" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;px;width:60px;height:26px" onchange="applyForce(\'' + div + '\',w,h,\'' + extra + '\',' + signaling + ',' + hidetoolbar + ');">\n\
                                     <option value="1">Compact</option>\n\
                                     <option value="6" selected>Moderate</option>\n\
                                     <option value="12">Relaxed</option>\n\
@@ -512,7 +513,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         zoomWidth = (w - scale * w) / 2;
         zoomHeight = (h - scale * h) / 2;
         if (hidetoolbar==1) topMenuHeight=0;
-        maingraph = d3.select("#" + div).append("div").attr("id", "container" + div).append("svg:svg")
+        maingraph[div] = d3.select("#" + div).append("div").attr("id", "container" + div).append("svg:svg")
                 .attr("width", w)
                 .attr("height", h - topMenuHeight)
                 .attr("id", "menthaGraphStage" + div)
@@ -520,7 +521,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 .attr("version", "1.1")
                 .call(zoom[div].on("zoom", zoomSVG))
 
-        svg[div] = maingraph
+        svg[div] = maingraph[div]
                 .append("svg:g")
                 .attr("transform", "translate(" + zoomWidth + "," + zoomHeight + ")scale(" + scale + ")");
         svg[div].append("defs").append("style").attr("type", "text/css").text("<![CDATA[" + css + "]]>");
@@ -891,10 +892,10 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 var dx = d.target.x - d.source.x;
                 var dy = d.target.y - d.source.y;
                 if (!signaling) {
-                    var toplimit = 1;
+                    var toplimit = -topMenuHeight;
                     var bottomlimit = h;
-                    var rightlimit = w;
-                    var leftlimit = 0;
+                    var rightlimit = w+40;
+                    var leftlimit = -40;
                     if (dx > rightlimit)
                         dx = rightlimit;
                     if (dx < leftlimit)
@@ -1082,7 +1083,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         var row2pacetext = 15;
         var fontsize = "font-size:0.6em";
         
-        var legend = maingraph.append("svg:g").attr("class", "legend").attr("style", "display:none");
+        var legend = maingraph[div].append("svg:g").attr("class", "legend").attr("style", "display:none");
         legend.attr("transform", "matrix(1 0 0 1 0 0)").attr("onmousedown", "selectElement(evt)");
         legend.append("rect")
                 .attr("x", 5)
@@ -1318,8 +1319,8 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         } catch (err) {}
     return svg[div];
 }
-function toggleScores() {
-    $("[id$='-score']").toggle();
+function toggleScores(div) {
+    $("#"+div+" [id$='-score']").toggle();
 }
 function getDescription(id, name, x, y, div) {
     idpathway = "";
@@ -1412,11 +1413,11 @@ document.write("\n\
 <script type=\"text/javascript\" src=\"" + baseurl + "/js/fixOnMouseOut.js\"></script>\n\
 <div id=\"info\"\n\
     onmouseout=\"fixOnMouseOut(this, event, actionOut);\"\n\
-    style=\"width:250px;z-index:800;font: 14px sans-serif;box-shadow: 3px 3px 4px #000000;padding:2px;background:#FFFFFF;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 4px 4px 4px 4px;vertical-align: middle;overflow:hidden\">\n\
+    style=\"width:200px;height:150px;z-index:800;font: 14px sans-serif;box-shadow: 3px 3px 4px #000000;padding:2px;background:#FFFFFF;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 4px 4px 4px 4px;vertical-align: middle;overflow:hidden\">\n\
 </div>\n\
 <div id=\"infoEdge\"\n\
     onmouseout=\"fixOnMouseOut(this, event, actionOut2);\"\n\
-    style=\"max-width:450px;z-index:800;font: 14px sans-serif;box-shadow: 3px 3px 4px #000000;padding:2px;background:#FFFFFF;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 4px 4px 4px 4px;vertical-align: middle;\">\n\
+    style=\"width:200px;height:150px;z-index:800;font: 14px sans-serif;box-shadow: 3px 3px 4px #000000;padding:2px;background:#FFFFFF;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 4px 4px 4px 4px;vertical-align: middle;\">\n\
 </div>\n\
 ");
 function exportNetwork(div) {
@@ -1427,14 +1428,16 @@ function exportNetwork(div) {
     });
     myWindow.focus();
 }
-function reset(force, div, w, h) {
+function reset(force, div, w, h, signaling) {
     force.nodes().forEach(function (d) {
         d.fixed = false;
         d.x = w / 2;
         d.y = h / 2;
     });
     bounding[div] = true;
-    setFixedPositions(force, w, h);
+    if (signaling==1) {
+		setFixedPositions(force, w, h);
+	}
     force.start();
     svg[div].selectAll("g").transition().duration(500).attr('transform', 'translate(0,0) scale(1)');
 }
@@ -1520,117 +1523,60 @@ function setFixedPositions(force, w, h) {
         }
     });
 }
-function filterStart(links) {
-    var th = "0.0";
-    var inttype = "direct";
+
+function applyForce(div, x, y, extra, signaling, hidetoolbar) {
+    var e = document.getElementById("scoreFilter"+div);
+    indexScore = e.selectedIndex;
+    var th = e.options[indexScore].value;
+
+    var e1 = document.getElementById("interactionFilter"+div);
+    indexInteractions = e1.selectedIndex;
+    var inttype = e1.options[indexInteractions].value;
+
+    var val = document.getElementById("forceFilter"+div);
+    indexForce = val.selectedIndex;
+    nodescharge[div] = -val.value * 100;
+
     links_signor = new Array();
     var i = 0;
-    for (a in links) {
-        var elm = links[a];
-        if (elm['typeA'] == "stimulus" || elm['typeB'] == "stimulus" || elm['typeA'] == "phenotype" || elm['typeB'] == "phenotype") {
-            links_signor[i] = elm;
-            i++;
-        }
+    for (a in original[div]) {
+        var elm = original[div][a];
         if (inttype == "direct") {
-            if (elm['type'] && !elm['type'].contains("undefined") && (parseFloat(elm['score']) >= th || elm['score'] == undefined)) {
+            if (elm['type'] && (elm['type'].contains("bind") || (!elm['type'].contains("undefined") && !elm['type'].contains("transcription") && (parseFloat(elm['score']) >= th || elm['score'] === undefined)))) {
+                links_signor[i] = elm;
+                i++;
+            }
+        } else {
+            if ((elm['type'] && elm['type'].contains(inttype) && (parseFloat(elm['score']) >= th || elm['score'] === undefined))) {
                 links_signor[i] = elm;
                 i++;
             }
         }
-    }
-    return links_signor;
-}
-function filterActivation(div, x, y, extra) {
-    links_signor = new Array();
-    var i = 0;
-    for (a in original[div]) {
-        var elm = original[div][a];
-        if (elm['type'] && elm['type'].contains("activation")) {
-            links_signor[i] = elm;
-            i++;
-        }
-    }
-    document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
-}
-function filterInhibition(div, x, y, extra) {
-    links_signor = new Array();
-    var i = 0;
-    for (a in original[div]) {
-        var elm = original[div][a];
-        if (elm['type'] && elm['type'].contains("inhibition")) {
-            links_signor[i] = elm;
-            i++;
-        }
-    }
-    document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
-}
-function filterDirect(div, x, y, extra) {
-    links_signor = new Array();
-    var i = 0;
-    for (a in original[div]) {
-        var elm = original[div][a];
-        if (elm['type'] && (!elm['type'].contains("undefined") && !elm['type'].contains("unknown") && !elm['type'].contains("chemical"))) {
-            links_signor[i] = elm;
-            i++;
-        }
-    }
-    document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
-}
-function filterIndirect(div, x, y, extra) {
-    links_signor = new Array();
-    var i = 0;
-    for (a in original[div]) {
-        var elm = original[div][a];
-        if (elm['type'] && !elm['type'].contains("chemical") && (elm['type'].contains("undefined") || elm['type'].contains("unknown"))) {
-            links_signor[i] = elm;
-            i++;
-        }
-    }
-    document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
-}
-function filterAll(div, x, y, extra) {
-    is_showing_chemical = 0;
-    links_signor = new Array();
-    var i = 0;
-    for (a in original[div]) {
-        var elm = original[div][a];
-        if (elm['type']) {
-            links_signor[i] = elm;
-            i++;
-        }
-    }
-    document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
-}
 
-function applyForce(div, x, y, extra) {
-    var e = document.getElementById("scoreFilter");
-    indexScore = e.selectedIndex;
-    var th = e.options[indexScore].value;
-    var e1 = document.getElementById("interactionFilter");
-    indexInteractions = e1.selectedIndex;
-    var val = document.getElementById("forceFilter");
-    indexForce = val.selectedIndex;
-    nodescharge = -val.value * 100;
+    }
+
     document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
+    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra, signaling, hidetoolbar);
+
     for (e in oldColors) {
         if (e.length > 1)
             svg[div].select('#' + e).attr("style", oldColors[e]);
     }
+    
+    document.getElementById("scoreFilter"+div).selectedIndex=indexScore+"";
+    document.getElementById("interactionFilter"+div).selectedIndex=indexInteractions+"";
+    document.getElementById("forceFilter"+div).selectedIndex=indexForce+"";
 }
 
-function applyFilter(div, x, y, extra) {
-    var e = document.getElementById("scoreFilter");
+function applyFilter(div, x, y, extra, signaling, hidetoolbar) {
+    var e = document.getElementById("scoreFilter"+div);
     indexScore = e.selectedIndex;
     var th = e.options[indexScore].value;
-    var e1 = document.getElementById("interactionFilter");
+
+    var e1 = document.getElementById("interactionFilter"+div);
     indexInteractions = e1.selectedIndex;
     var inttype = e1.options[indexInteractions].value;
+
     links_signor = new Array();
     var i = 0;
     for (a in original[div]) {
@@ -1649,12 +1595,16 @@ function applyFilter(div, x, y, extra) {
 
     }
     document.getElementById(div).innerHTML = "";
-    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra);
+    initGraph(links_signor, nlabels[div], elabels[div], div, x, y, extra, signaling, hidetoolbar);
     for (e in oldColors) {
         if (e.length > 1)
             svg[div].select('#' + e).attr("style", oldColors[e]);
     }
+    
+    document.getElementById("scoreFilter"+div).selectedIndex=indexScore+"";
+    document.getElementById("interactionFilter"+div).selectedIndex=indexInteractions+"";
 }
+
 function capture(div, w, h) {
     var text = document.getElementById(div).innerHTML.replace('<div>', '').replace('</div>', '');
     text = text.replace("&lt;", "<").replace("&gt;", ">").replace(/&nbsp;/g, "");
@@ -1664,8 +1614,8 @@ function capture(div, w, h) {
 }
 
 function hideLegend(div) {
-    maingraph.select(".legend").attr("style", function () {
-        if (maingraph.select(".legend").attr("style") == "display:none")
+    maingraph[div].select(".legend").attr("style", function () {
+        if (maingraph[div].select(".legend").attr("style") == "display:none")
             return "";
         else
             return "display:none";
