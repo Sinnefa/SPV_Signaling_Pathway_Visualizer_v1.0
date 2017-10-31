@@ -647,6 +647,19 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 .attr("width", w+100)
                 .attr("height", h+100);
 	svg[div].attr("clip-path", "url(#clipRect)")
+	$("#" + div).bind("contextmenu",function(e){
+        	var url = window.location.href+"";
+	        if (url.contains(baseurl)) {
+        	    var id = e["target"].id;
+	            var x=e["pageX"];
+        	    var y=e["pageY"];
+	            clicked=id;
+        	    document.getElementById('contextmenu').style.top = (y - 10) + "px";
+	            document.getElementById('contextmenu').style.left = (x - 10) + "px";
+        	    $("#contextmenu").show();
+	        }
+	        return false;
+	});
         var tooltip = d3.select("body")
                 .append("div")
                 .style("position", "absolute")
@@ -1413,6 +1426,7 @@ function getEvidence(a, b, score, x, y, div, g1, g2) {
 
 var actionOut = '$("#info").hide();';
 var actionOut2 = '$("#infoEdge").hide();';
+var actionOut3 = '$("#contextmenu").hide();';
 document.write("\n\
 <script type=\"text/javascript\" src=\"" + baseurl + "/js/constants.js\"></script>\n\
 <script type=\"text/javascript\" src=\"" + baseurl + "/js/jquery.mousewheel.js\"></script>\n\
@@ -1427,6 +1441,11 @@ document.write("\n\
     onmouseout=\"fixOnMouseOut(this, event, actionOut2);\"\n\
     style=\"width:200px;height:150px;z-index:800;font: 14px sans-serif;box-shadow: 3px 3px 4px #000000;padding:2px;background:#FFFFFF;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 4px 4px 4px 4px;vertical-align: middle;\">\n\
 </div>\n\
+<div id=\"contextmenu\"\n\
+    onmouseout=\"fixOnMouseOut(this, event, actionOut3);\"\n\
+    style=\"z-index:800;font: 12px sans-serif;box-shadow: 2px 2px 4px #000000;padding:2px;background:#EEF3E2;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 2px 2px 2px 2px;cursor:pointer;\">\n\
+Context Menu\n\
+</div>\
 ");
 function exportNetwork(div) {
     myWindow = window.open('', '', 'width=800,height=600');
