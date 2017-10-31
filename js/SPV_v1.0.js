@@ -648,17 +648,16 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 .attr("height", h+100);
 	svg[div].attr("clip-path", "url(#clipRect)")
 	$("#" + div).bind("contextmenu",function(e){
-        	var url = window.location.href+"";
-	        if (url.contains(baseurl)) {
-        	    var id = e["target"].id;
-	            var x=e["pageX"];
-        	    var y=e["pageY"];
-	            clicked=id;
+       	    var id = e["target"].id;
+            var x=e["pageX"];
+       	    var y=e["pageY"];
+            clicked=id;
+            if(clicked in nodes) {
         	    document.getElementById('contextmenu').style.top = (y - 10) + "px";
 	            document.getElementById('contextmenu').style.left = (x - 10) + "px";
-        	    $("#contextmenu").show();
-	        }
-	        return false;
+	       	    $("#contextmenu").show();
+            }
+	    return false;
 	});
         var tooltip = d3.select("body")
                 .append("div")
