@@ -17,7 +17,7 @@ Examples (Right click to open these pages in a new window):
 <script src="./js/SPV_v1.0.js"></script>
 ```
 3) Set the variable <i>baseurl</i> to the url where you copied the js/ directory. This is to find tool bar images and extra Javascript libraries used by SPV.
-4) Add a ```html<div></div>``` block to host the graphical representation of your network
+4) Add a ```html <div></div>``` block to host the graphical representation of your network
 ```html
 <center>
   <div id="graphArea" style="width:640px;height:480px;background:white;overflow:hidden;"></div>
