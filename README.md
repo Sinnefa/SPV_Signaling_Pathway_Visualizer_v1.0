@@ -4,8 +4,8 @@
 This is a Javascript library build on top of D3.js to visualize molecular interactions with particular attention to signaling pathways.
 
 Examples:
-1) [Proein-protein interaction network](http://mentha.uniroma2.it/browser/light.php?ids=P42345,P50406&org=all){:target="_blank"}
-2) [Signaling Network](http://signor.uniroma2.it/pathway_browser.php?organism=&pathway_list=SIGNOR-MS&x=25&y=25){:target="_blank"}
+1) [Proein-protein interaction network](http://mentha.uniroma2.it/browser/light.php?ids=P42345,P50406&org=all target="_blank")
+2) [Signaling Network](http://signor.uniroma2.it/pathway_browser.php?organism=&pathway_list=SIGNOR-MS&x=25&y=25 target="_blank")
 
 ## Installation
 1) Copy the js directory in where you want within your website
