@@ -37,12 +37,14 @@ node_labels["B"] = "This is a description for <b>Protein B</b>";
 var edge_labels = [];
 edge_labels["AB"] = "This links <b>Protein A<b> and <i>Protein B</i>";
 ```
-7) (Optional) Push ids of the elements you want to be placed on fixed layers:
+7) (Optional) Push ids of the elements you want to be placed on fixed layers, or define a set of nodes that should be enveloped by hulls:
 ```javascript
-var extracellular = [];
-var factors = [];
-var receptors = [];
-var phenotypesList = [];
+extracellular.push('I');
+factors.push('B');
+receptors.push('C');
+phenotypesList.push('H');
+
+complexesList["A Sample Complex"] = ["P61964","Q9UBL3","O14686"];
 ```
 8) Initialize the graph:
 ```javascript
