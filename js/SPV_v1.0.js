@@ -590,7 +590,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 .attr("id", "inhibition")
                 .attr("style", "fill:" + red)
                 .attr("viewBox", "0 0 30 30")
-                .attr("refX", 16)
+                .attr("refX", 15)
                 .attr("refY", 10)
                 .attr("markerWidth", (nodeRadius * 3) / 2)
                 .attr("markerHeight", (nodeRadius * 3) / 2)
@@ -625,8 +625,8 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 .attr("viewBox", "0 0 20 20")
                 .attr("refX", 16)
                 .attr("refY", 4)
-                .attr("markerWidth", (nodeRadius * 3) / 2)
-                .attr("markerHeight", (nodeRadius * 3) / 2)
+                .attr("markerWidth", (nodeRadius * 4) / 3)
+                .attr("markerHeight", (nodeRadius * 4) / 3)
                 .attr("orient", "auto")
                 .append("svg:rect")
                 .attr("width", 8)
@@ -983,7 +983,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 if (d.source.id == d.target.id) {
                     return "M" + (d.source.x - 5) + "," + d.source.y + "A15,15 0 1,1 " + (d.source.x) + "," + d.source.y;
                 }
-                return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+		return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
             });
             complexes.attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")scale(1.3,1.3)";
@@ -1339,6 +1339,16 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         } catch (err) {}
     return svg[div];
 }
+
+function clone(obj) {
+    if (null == obj || "object" != typeof obj) return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+    }
+    return copy;
+}
+
 function toggleScores(div) {
     $("#"+div+" [id$='-score']").toggle();
 }
