@@ -413,7 +413,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         var distance = (h / Object.keys(nodes).length) + 5;
         if (distance < 35)
             distance = 35;
-        nodescharge[div] = -600; 
+        //nodescharge[div] = -600; 
         
         // Determining nucleus position proportional to graph and adapting other values
         var posNucleo = h + (h / 3);
@@ -429,7 +429,6 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
             nodescharge[div] = -900;
             distance = 50;
         }
-        
         forceArray[div] = d3.layout.force()
                 .nodes(d3.values(nodes))
                 .links(links)
@@ -1537,7 +1536,6 @@ function setFixedPositions(force, w, h) {
     });
     var totPhenotypes = 0;
     force.nodes().forEach(function (d) {
-//if (d.category == "phenotype") {
         if (phenotypesList.contains(d.id)) {
             totPhenotypes++;
         }
@@ -1548,7 +1546,6 @@ function setFixedPositions(force, w, h) {
     if (posNucleo <= 270)
         posNucleo -= 20;
     force.nodes().forEach(function (d) {
-//if (d.category == "phenotypex") {
         if (phenotypesList.contains(d.id)) {
             d.y = posNucleo;
             d.x = x;
@@ -1571,7 +1568,7 @@ function applyForce(div, x, y, extra, signaling, hidetoolbar) {
 
     var val = document.getElementById("forceFilter"+div);
     indexForce = val.selectedIndex;
-    nodescharge[div] = -val.value * 100;
+    nodescharge[div] = -val.value * 200;
 
     links_signor = new Array();
     var i = 0;
