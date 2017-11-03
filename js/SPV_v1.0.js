@@ -426,7 +426,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                 nodescharge[div] = -600; //-250
         }
         if (!signaling) { // If we are visualizing plain PPI charge and distance are different
-            nodescharge[div] = -900;
+            if (nodescharge[div] === undefined) nodescharge[div] = -900;
             distance = 50;
         }
         forceArray[div] = d3.layout.force()
