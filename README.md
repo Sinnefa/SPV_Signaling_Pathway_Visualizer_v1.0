@@ -12,7 +12,7 @@ Examples (Right click to open these pages in a new window):
 2) Add the following line in the webpage you want to add the visualizer to:
 ```html
 <script>
-  baseurl = ".";
+   baseurl = "./js/";
 </script>
 <script src="./js/SPV_v1.0.js"></script>
 ```

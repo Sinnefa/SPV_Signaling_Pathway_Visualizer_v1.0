@@ -413,7 +413,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
         var distance = (h / Object.keys(nodes).length) + 5;
         if (distance < 35)
             distance = 35;
-        //nodescharge[div] = -600; 
+        if (nodescharge[div] === undefined) nodescharge[div] = -600; 
         
         // Determining nucleus position proportional to graph and adapting other values
         var posNucleo = h + (h / 3);
@@ -457,11 +457,11 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
                         <div style="line-height:0px;text-align:left;vertical-alignment:middle;padding:0em;height:' + topMenuHeight + 'px;background:gray;width:100%;font-family: \'Lucida Console\', Monaco, monospace;font-size:1em;">\n\
                             <table class="controlbar">\n\
                             <tr>\n\
-                            <td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;margin-left:5px;height:25px;width:25px;padding:0px;" onclick="zoom[\'' + div + '\'].scale(1).translate([0, 0]);reset(forceArray[\'' + div + '\'],\'' + div + '\',w,h,'+signaling+');"><img alt="Reset layout" title="Reset layout" src="' + baseurl + '/js/refresh.png" border="0"/></button></td>\n\
-                            <td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="capture(\'container' + div + '\',w,' + (h - topMenuHeight) + ')"><img alt="Save network" title="Save network" src="' + baseurl + '/js/camera.png" border="0"/></button></td>\n\
-                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="exportNetwork(\'' + div + '\');"><img alt="Export network" title="Export network" src="' + baseurl + '/js/export.png" border="0"/></button></td>\n\
-                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="toggleScores(\''+div+'\')"/><img alt="Export network" title="Toggle scores" src="' + baseurl + '/js/score.png" border="0"/></button></td>\n\
-                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="hideLegend(\'' + div + '\')"><img alt="Toggle legend" title="Toggle legend" src="' + baseurl + '/js/legend.png" border="0"/></button></td>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;margin-left:5px;height:25px;width:25px;padding:0px;" onclick="zoom[\'' + div + '\'].scale(1).translate([0, 0]);reset(forceArray[\'' + div + '\'],\'' + div + '\',w,h,'+signaling+');"><img alt="Reset layout" title="Reset layout" src="' + baseurl + '/refresh.png" border="0"/></button></td>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="capture(\'container' + div + '\',w,' + (h - topMenuHeight) + ')"><img alt="Save network" title="Save network" src="' + baseurl + '/camera.png" border="0"/></button></td>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="exportNetwork(\'' + div + '\');"><img alt="Export network" title="Export network" src="' + baseurl + '/export.png" border="0"/></button></td>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="toggleScores(\''+div+'\')"/><img alt="Export network" title="Toggle scores" src="' + baseurl + '/score.png" border="0"/></button></td>\n\
+                            <td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="hideLegend(\'' + div + '\')"><img alt="Toggle legend" title="Toggle legend" src="' + baseurl + '/legend.png" border="0"/></button></td>\n\
                             <td><span style="font-size:0.8em;font-family:\'Open Sans\',sans-serif;color:white"><b>Type:</b></span></td>\n\
                             <td>\n\
                                 <select id="interactionFilter'+div+'" style="background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin-top:1px;margin-right:5px;width:60px;height:26px" onchange="applyFilter(\'' + div + '\',w,h,\'' + extra + '\',' + signaling + ',\'' + hidetoolbar + '\');">\n\
@@ -1363,7 +1363,7 @@ function getDescription(id, name, x, y, div) {
         $("#info").show();
     } else {
         var html = "<div style=\"px;text-align:center;margin-bottom:2px;background:#00A383;color:white;\"><b>" + name + "</b></div><div class=\"scroll-pane\" style=\"text-align:left;\">";
-        html += "<div id='lkjlkj'><div style='width:150px' ><center><img src='js/loader.gif'></img><br>Loading...</center></div></div>";
+        html += "<div id='lkjlkj'><div style='width:150px' ><center><img src='"+ baseurl +"/loader.gif'></img><br>Loading...</center></div></div>";
         html += "</div>";
         document.getElementById('info').innerHTML = html;
         document.getElementById('info').style.top = (y - 10) + "px";
@@ -1405,7 +1405,7 @@ function getEvidence(a, b, score, x, y, div, g1, g2) {
         else
             score = ": " + score;
         var html = "<div style=\"text-align:center;margin-bottom:2px;background:#00A383;color:white;\"><b>" + g1 + " - " + g2 + "" + score + "</b></div><div class=\"scroll-pane\" style=\"text-align:left\">";
-        html += "<div id='lkjlkj2'><div style='width:150px' ><center><img src='js/loader.gif'></img><br>Loading...</center></div></div>";
+        html += "<div id='lkjlkj2'><div style='width:150px' ><center><img src='"+baseurl+"/loader.gif'></img><br>Loading...</center></div></div>";
         html += "</div>";
         document.getElementById('infoEdge').innerHTML = html;
         document.getElementById('infoEdge').style.top = (y - 10) + "px";
@@ -1436,11 +1436,11 @@ var actionOut = '$("#info").hide();';
 var actionOut2 = '$("#infoEdge").hide();';
 var actionOut3 = '$("#contextmenu").hide();';
 document.write("\n\
-<script type=\"text/javascript\" src=\"" + baseurl + "/js/constants.js\"></script>\n\
-<script type=\"text/javascript\" src=\"" + baseurl + "/js/jquery.mousewheel.js\"></script>\n\
-<script type=\"text/javascript\" src=\"" + baseurl + "/js/jquery.jscrollpane.min.js\"></script>\n\
+<script type=\"text/javascript\" src=\"" + baseurl + "/constants.js\"></script>\n\
+<script type=\"text/javascript\" src=\"" + baseurl + "/jquery.mousewheel.js\"></script>\n\
+<script type=\"text/javascript\" src=\"" + baseurl + "/jquery.jscrollpane.min.js\"></script>\n\
 <script type=\"text/javascript\" src=\"http://d3js.org/d3.v3.min.js\"></script>\n\
-<script type=\"text/javascript\" src=\"" + baseurl + "/js/fixOnMouseOut.js\"></script>\n\
+<script type=\"text/javascript\" src=\"" + baseurl + "/fixOnMouseOut.js\"></script>\n\
 <div id=\"info\"\n\
     onmouseout=\"fixOnMouseOut(this, event, actionOut);\"\n\
     style=\"width:200px;height:150px;z-index:800;font: 14px sans-serif;box-shadow: 3px 3px 4px #000000;padding:2px;background:#FFFFFF;border:1px solid black;position: absolute;top:-1000px;left:-1000px;border-radius: 4px 4px 4px 4px;vertical-align: middle;overflow:hidden\">\n\

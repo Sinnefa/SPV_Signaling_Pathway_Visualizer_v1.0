@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
-            baseurl = ".";
+            baseurl = "./js/";
         </script>
         <script src="./js/SPV_v1.0.js"></script>
     </head>
@@ -15,7 +15,7 @@
 	<table>
 	<tr>
 	<td align="center"><b>Interaction Types</b><br>
-        <div id="graphArea" style="width:640px;height:480px;background:white;overflow: hidden;"></div>
+        <div id="graphArea" style="width:740px;height:480px;background:white;overflow: hidden;"></div>
 	</td>
 	<td align="center"><b>Signaling Example</b><br>
         <div id="graphArea1" style="width:640px;height:480px;background:white;overflow: hidden;"></div>
@@ -24,7 +24,6 @@
 	</table>
     </center>
     <script>
-
             var links = [
 
                 {source: "Protein A", idA: "A", typeA: "protein", target: "Protein B", idB: "B", typeB: "protein", type: "none", score: 0.1},
@@ -93,7 +92,6 @@
             setNodesColor("graphArea", ['P61964'], 'red');
             setNodesColor("graphArea", ['Q9UBL3'], 'green');
             setNodesColor("graphArea", ['O14686'], 'blue');
-
     </script>
 </body>
 </html>
