@@ -91,9 +91,9 @@ List of possible values for the type attribute
 
 ### setContextMenu(htmlPageDiv, text)
 This function allows you can to add a right-click context menu.
-'''javascript
+```javascript
 setContextMenu("mydiv", "Context menu for PPI");
-'''
+```
 
 ### setNodesColor(htmlPageDiv, idsList, color);
 It can be used to highlight specific nodes after the visualization has been initialized. It can be used to highlight or animate the graph.
