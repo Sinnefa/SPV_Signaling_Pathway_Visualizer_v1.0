@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SPV_Signaling_Pathway_Visualizer - DEMO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            baseurl = "../js/";
+        </script>
+        <script src="../js/SPV_v1.0.js"></script>
+    </head>
+    <body>
+        <div id="graphArea" style="width:700px;height:700px;background:white;overflow: hidden;"></div>
+    </center>
+    <script>
+                
+	var edge_labels = [];
+	var node_labels = [];
+	var nodes = ["Q13541","P42345","SIGNOR-C26","SIGNOR-C15","P60484","Q96B36","SIGNOR-PH30","SIGNOR-C101","P27986","P35568","O75385","Q9UBK2","CID:24755492","P37231","O15530","SIGNOR-PF24","SIGNOR-C2","Q8N122","Q15382","P49841","P19484","SIGNOR-C113","SIGNOR-PH32","SIGNOR-PH29","P06730","P06213","P23443","P62753","P01308","SIGNOR-ST5","P42336","Q15418","SIGNOR-PF1","P36956"];
+
+	var links_signor = [{"source":"mTORC2","idA":"SIGNOR-C2","typeA":"complex","target":"AKT","idB":"SIGNOR-PF24","typeB":"proteinfamily","type":"activation"},{"source":"PDPK1","idA":"O15530","typeA":"protein","target":"AKT","idB":"SIGNOR-PF24","typeB":"proteinfamily","type":"activation"},{"source":"MTOR","idA":"P42345","typeA":"protein","target":"AKT1S1","idB":"Q96B36","typeB":"protein","type":"inhibition","score":"0.41"},{"source":"ULK1","idA":"O75385","typeA":"protein","target":"AMPK","idB":"SIGNOR-C15","typeB":"complex","type":"inhibition"},{"source":"EIF4EBP1","idA":"Q13541","typeA":"protein","target":"EIF4E","idB":"P06730","typeB":"protein","type":"bind-inhibition","score":"1.00"},{"source":"MTOR","idA":"P42345","typeA":"protein","target":"EIF4EBP1","idB":"Q13541","typeB":"protein","type":"inhibition"},{"source":"RPS6KA1","idA":"Q15418","typeA":"protein","target":"GSK3B","idB":"P49841","typeB":"protein","type":"inhibition","score":"0.50"},{"source":"AMPK","idA":"SIGNOR-C15","typeA":"complex","target":"INSR","idB":"P06213","typeB":"protein","type":"activation"},{"source":"INS","idA":"P01308","typeA":"protein","target":"INSR","idB":"P06213","typeB":"protein","type":"bind-activation","score":"0.56"},{"source":"INSR","idA":"P06213","typeA":"protein","target":"INSR","idB":"P06213","typeB":"protein","type":"activation"},{"source":"INSR","idA":"P06213","typeA":"protein","target":"IRS1","idB":"P35568","typeB":"protein","type":"activation","score":"0.97"},{"source":"RPS6KB1","idA":"P23443","typeA":"protein","target":"IRS1","idB":"P35568","typeB":"protein","type":"inhibition","score":"0.44"},{"source":"AminoAcids","idA":"SIGNOR-ST5","typeA":"stimulus","target":"LAMTOR","idB":"SIGNOR-C26","typeB":"complex","type":"undefined-activation"},{"source":"SREBF1","idA":"P36956","typeA":"protein","target":"Lipogenesis","idB":"SIGNOR-PH30","typeB":"phenotype","type":"undefined-activation"},{"source":"PPARGC1A","idA":"Q9UBK2","typeA":"protein","target":"mitochondrial biogenesis","idB":"SIGNOR-PH32","typeB":"phenotype","type":"undefined-activation"},{"source":"RAGAC","idA":"SIGNOR-C113","typeA":"complex","target":"MTOR","idB":"P42345","typeB":"protein","type":"activation"},{"source":"RHEB","idA":"Q15382","typeA":"protein","target":"MTOR","idB":"P42345","typeB":"protein","type":"bind-activation","score":"0.67"},{"source":"PtsIns(3,4,5)P3","idA":"CID:24755492","typeA":"smallmolecule","target":"PDPK1","idB":"O15530","typeB":"protein","type":"bind-activation"},{"source":"PIK3R1","idA":"P27986","typeA":"protein","target":"PIK3CA","idB":"P42336","typeB":"protein","type":"bind-activation","score":"0.78"},{"source":"IRS1","idA":"P35568","typeA":"protein","target":"PIK3R1","idB":"P27986","typeB":"protein","type":"bind-activation","score":"0.71"},{"source":"ERK1\/2","idA":"SIGNOR-PF1","typeA":"proteinfamily","target":"PPARG","idB":"P37231","typeB":"protein","type":"activation"},{"source":"EIF4E","idA":"P06730","typeA":"protein","target":"Protein Synthesis","idB":"SIGNOR-PH29","typeB":"phenotype","type":"undefined-activation"},{"source":"PIK3CA","idA":"P42336","typeA":"protein","target":"PtsIns(3,4,5)P3","idB":"CID:24755492","typeB":"smallmolecule","type":"activation"},{"source":"PTEN","idA":"P60484","typeA":"protein","target":"PtsIns(3,4,5)P3","idB":"CID:24755492","typeB":"smallmolecule","type":"inhibition"},{"source":"LAMTOR","idA":"SIGNOR-C26","typeA":"complex","target":"RAGAC","idB":"SIGNOR-C113","typeB":"complex","type":"activation"},{"source":"TSC1\/TSC2","idA":"SIGNOR-C101","typeA":"complex","target":"RHEB","idB":"Q15382","typeB":"protein","type":"inhibition"},{"source":"RPS6KA1","idA":"Q15418","typeA":"protein","target":"RPS6","idB":"P62753","typeB":"protein","type":"activation","score":"0.75"},{"source":"RPS6KB1","idA":"P23443","typeA":"protein","target":"RPS6","idB":"P62753","typeB":"protein","type":"activation","score":"0.81"},{"source":"ERK1\/2","idA":"SIGNOR-PF1","typeA":"proteinfamily","target":"RPS6KA1","idB":"Q15418","typeB":"protein","type":"activation"},{"source":"MTOR","idA":"P42345","typeA":"protein","target":"RPS6KB1","idB":"P23443","typeB":"protein","type":"activation","score":"0.93"},{"source":"MTOR","idA":"P42345","typeA":"protein","target":"RPTOR","idB":"Q8N122","typeB":"protein","type":"activation","score":"0.94"},{"source":"AMPK","idA":"SIGNOR-C15","typeA":"complex","target":"SREBF1","idB":"P36956","typeB":"protein","type":"inhibition"},{"source":"ERK1\/2","idA":"SIGNOR-PF1","typeA":"proteinfamily","target":"SREBF1","idB":"P36956","typeB":"protein","type":"activation"},{"source":"GSK3B","idA":"P49841","typeA":"protein","target":"SREBF1","idB":"P36956","typeB":"protein","type":"inhibition","score":"0.27"},{"source":"MTOR","idA":"P42345","typeA":"protein","target":"TFEB","idB":"P19484","typeB":"protein","type":"inhibition","score":"0.14"},{"source":"AKT","idA":"SIGNOR-PF24","typeA":"proteinfamily","target":"TSC1\/TSC2","idB":"SIGNOR-C101","typeB":"complex","type":"inhibition"},{"source":"AMPK","idA":"SIGNOR-C15","typeA":"complex","target":"TSC1\/TSC2","idB":"SIGNOR-C101","typeB":"complex","type":"activation"},{"source":"AMPK","idA":"SIGNOR-C15","typeA":"complex","target":"ULK1","idB":"O75385","typeB":"protein","type":"activation"},{"source":"MTOR","idA":"P42345","typeA":"protein","target":"ULK1","idB":"O75385","typeB":"protein","type":"inhibition","score":"0.39"},{"source":"AMPK","idA":"SIGNOR-C15","typeA":"complex","target":"PPARGC1A","idB":"Q9UBK2","typeB":"protein","type":"activation"}];
+
+	var extracellular = [];
+	var factors = [];
+	var receptors = [];
+	var phenotypesList=[""];
+
+	extracellular.push('P01308');
+	extracellular.push('SIGNOR-ST5');
+
+	phenotypesList.push('SIGNOR-PH30');
+	phenotypesList.push('SIGNOR-PH32');
+	phenotypesList.push('SIGNOR-PH29');
+
+	factors.push('P36956');
+	factors.push('P37231');
+	factors.push('P19484');
+	receptors.push('P06213');
+	receptors.push('Q9UBK2');
+	receptors.push('CID:24755492');
+
+
+	var a = initGraph(links_signor, null, null, "graphArea", 700, 700, null, 1, 0, 1);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SPV_Signaling_Pathway_Visualizer - DEMO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            baseurl = "../js/";
+        </script>
+        <script src="../js/SPV_v1.0.js"></script>
+    </head>
+    <body>
+        <div id="graphArea" style="width:740px;height:480px;background:white;overflow: hidden;"></div>
+    </center>
+    <script>
+            
+	var myentityShape="m 5.0243799,-13.653959 a 6.58048,6.6052478 0 0 0 -6.5800186,6.6043992 6.58048,6.6052478 0 0 0 2.7450609,5.3600938 l -7.7475727,6.1980577 2.3116297,2.311629 6.9348902,-4.623259 0,6.934891 -9.2465199,6.9348883 2.3116297,2.311632 9.2465214,-6.934892 9.2465194,6.934892 2.31163,-2.311632 -9.2465196,-6.9348883 0,-6.934891 6.9348896,4.623259 2.31163,-2.311629 -7.7259006,-6.1809015 a 6.58048,6.6052478 0 0 0 2.7730526,-5.37725 6.58048,6.6052478 0 0 0 -6.5809221,-6.6043992 z";
+
+	var linksPPI = [{source: "Custom Shape", idA: "Q9EQC1", typeA: "myentity", target: "EGFR", idB: "Q01279", typeB: "protein", type: "custominteraction", score: 0.08},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "LAT", idB: "O54957", typeB: "protein", type: "ppi", score: 0.13},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "OSMR", idB: "O70458", typeB: "protein", type: "ppi", score: 0.21},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "UBR1", idB: "O70481", typeB: "protein", type: "ppi", score: 0.18},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "PTPRC", idB: "P06800", typeB: "protein", type: "ppi", score: 0.21},{source: "ABI1", idA: "Q8CBW3", typeA: "protein", target: "SOS1", idB: "Q62245", typeB: "protein", type: "ppi", score: 0.21},{source: "SPRY4", idA: "Q9WTP2", typeA: "protein", target: "SOS1", idB: "Q62245", typeB: "protein", type: "ppi", score: 0.38},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "PLCG1", idB: "Q62077", typeB: "protein", type: "ppi", score: 0.21},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "SHC1", idB: "P98083", typeB: "protein", type: "ppi", score: 0.21},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "GRB2", idB: "Q60631", typeB: "protein", type: "ppi", score: 0.51},{source: "SPRY1", idA: "Q9QXV9", typeA: "protein", target: "SOS1", idB: "Q62245", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "SRC", idB: "P05480", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "ERBB2", idB: "P70424", typeB: "protein", type: "ppi", score: 0.38},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "EGF", idB: "P01132", typeB: "protein", type: "ppi", score: 0.45},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "EPS15", idB: "P42567", typeB: "protein", type: "ppi", score: 0.24},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "EGFR", idB: "Q01279", typeB: "protein", type: "ppi", score: 0.49},{source: "GRB2", idA: "Q60631", typeA: "protein", target: "EGFR", idB: "Q01279", typeB: "protein", type: "ppi", score: 0.79},{source: "SPRY2", idA: "Q9QXV8", typeA: "protein", target: "SOS1", idB: "Q62245", typeB: "protein", type: "ppi", score: 0.38},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "UBC", idB: "P0CG50", typeB: "protein", type: "ppi", score: 0.61},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "CBL", idB: "P22682", typeB: "protein", type: "ppi", score: 0.95},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "CD22", idB: "P35329", typeB: "protein", type: "ppi", score: 0.21},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "RET", idB: "P35546", typeB: "protein", type: "ppi", score: 0.38},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "PTPN12", idB: "P35831", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "KRAS", idB: "P32883", typeB: "protein", type: "ppi", score: 0.31},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "CRKL", idB: "P47941", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "PPP1CC", idB: "P63087", typeB: "protein", type: "ppi", score: 0.13},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "YWHAE", idB: "P62259", typeB: "protein", type: "ppi", score: 0.08},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "SHC1", idB: "P98083", typeB: "protein", type: "ppi", score: 0.38},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "EPS8", idB: "Q08509", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "SOCS5", idB: "O54928", typeB: "protein", type: "ppi", score: 0.38},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "DOK2", idB: "O70469", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "PTPN11", idB: "P35235", typeB: "protein", type: "ppi", score: 0.21},{source: "EGFR", idA: "Q01279", typeA: "protein", target: "MAPK14", idB: "P47811", typeB: "protein", type: "ppi", score: 0.21},{source: "JAK2", idA: "Q62120", typeA: "protein", target: "EGFR", idB: "Q01279", typeB: "protein", type: "ppi", score: 0.45},{source: "SOS1", idA: "Q62245", typeA: "protein", target: "EGFR", idB: "Q01279", typeB: "protein", type: "ppi", score: 0.21},{source: "PPP1R13B", idA: "Q62415", typeA: "protein", target: "EGFR", idB: "Q01279", typeB: "protein", type: "ppi", score: 0.21},{source: "ARHGEF7", idA: "Q9ES28", typeA: "protein", target: "EGFR", idB: "Q01279", typeB: "protein", type: "ppi", score: 0.38},];
+	var a = initGraph(linksPPI, null, null, "graphArea", 740, 480, null, 0, 0);
+
+	var cssn = ".myentity {\n\
+		stroke: #000;\n\
+		stroke-width: 1px;\n\
+		fill: red;\n\
+	}\n\
+	path.link-custominteraction {\n\
+		z-index:10000;\n\
+		fill: #ffffff;\n\
+		fill-opacity: 0.01;\n\
+		stroke: purple;\n\
+		stroke-width: 5px;\n\
+		stroke-dasharray: 1;\n\
+	}";
+
+	addEntityType("graphArea", cssn);
+
+    </script>
+</body>
+</html>

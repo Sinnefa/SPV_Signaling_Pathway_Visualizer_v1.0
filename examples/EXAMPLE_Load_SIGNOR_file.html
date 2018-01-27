@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SPV_Signaling_Pathway_Visualizer - DEMO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            baseurl = "../js/";
+        </script>
+        <script src="../js/SPV_v1.0.js"></script>
+    </head>
+    <body>
+        <div id="graphArea" style="width:800px;height:650px;background:white;overflow: hidden;"></div>
+    </center>
+    <script>
+
+	var links_signor = csv2spv("EXAMPLE_SIGNOR_Tab-Separated.tsv","signor");
+
+	var extracellular = [];
+	var factors = [];
+	var receptors = [];
+	var phenotypesList=[""];
+
+	var a = initGraph(links_signor, null, null, "graphArea", 800, 640, null, 1, 0, 1);
+
+    </script>
+</body>
+</html>
