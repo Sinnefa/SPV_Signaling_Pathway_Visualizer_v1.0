@@ -568,6 +568,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 						<option value="'+startingCharge*2+'">Relaxed</option>\n\
 					 </select>\n\
 				</td>\n\
+				<td width="100%" align="right"><a target="_blank" href="https://github.com/Sinnefa/SPV_Signaling_Pathway_Visualizer_v1.0" style="text-decoration:none;"><font color="white">Made with SPV</font></a>&nbsp;</td>\n\
 				</tr>\n\
 				</table>\n\
 			</div>\n\
