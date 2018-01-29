@@ -615,8 +615,6 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 			.attr("width", w)
 			.attr("height", h - topMenuHeight)
 			.attr("id", "menthaGraphStage" + div)
-			.attr("xmlns", "http://www.w3.org/2000/svg")
-			.attr("xmlns:xlink","http://www.w3.org/1999/xlink")
 			.attr("version", "1.1")
 			.call(zoom[div].on("zoom", zoomSVG))
 
@@ -1960,6 +1958,8 @@ function savePathway(anchor,div) {
 	var fileName = "pathway.svg";
 	var text = document.getElementById(div).innerHTML.replace('<div>', '').replace('</div>', '');
         text = text.replace("&lt;", "<").replace("&gt;", ">").replace(/&nbsp;/g, "");
+	text = text.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+	text = text.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
         var svg_blob = new Blob([text], {'type': "image/svg+xml"});
         var url = URL.createObjectURL(svg_blob);
 	document.getElementById(anchor).href = url;
