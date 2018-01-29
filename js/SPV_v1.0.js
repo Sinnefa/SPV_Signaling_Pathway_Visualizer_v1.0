@@ -64,17 +64,19 @@ var css = "\n\
 path.link {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #666;\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-undefined {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #666;\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray: 10;\n\
+        pointer-events:stroke;\n\
 }\n\
 /* Unknown */ \n\
 path.link-unknown {\n\
@@ -83,6 +85,7 @@ path.link-unknown {\n\
 	fill-opacity: 0;\n\
 	stroke: #777777;\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-bind-unknown {\n\
 	z-index:10000;\n\
@@ -91,22 +94,25 @@ path.link-bind-unknown {\n\
 	stroke: #777777;\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:5 5;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-undefined-unknown {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #777777;\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray: 15 15;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-transcription-unknown {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.1;\n\
+	fill-opacity: 0;\n\
 	stroke: #77777766;\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:5 5;\n\
+        pointer-events:stroke;\n\
 }\n\
 /* Activations */ \n\
 path.link-activation {\n\
@@ -115,6 +121,7 @@ path.link-activation {\n\
 	fill-opacity: 0;\n\
 	stroke: " + blue + ";\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-bind-activation {\n\
 	z-index:10000;\n\
@@ -123,14 +130,16 @@ path.link-bind-activation {\n\
 	stroke: " + blue + ";\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:5 5;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-undefined-activation {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + blue + ";\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray: 15 15;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-transcription-activation {\n\
 	z-index:10000;\n\
@@ -140,116 +149,131 @@ path.link-transcription-activation {\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:5 5;\n\
 	stroke-opacity: 0.3;\n\
+        pointer-events:stroke;\n\
 }\n\
 /* Inhibitions */ \n\
 path.link-inhibition {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + red + ";\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-bind-inhibition {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + red + ";\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:5 5;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-undefined-inhibition {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + red + ";\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray: 15 15;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-transcription-inhibition {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + transred + ";\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:5 5;\n\
 	stroke-opacity: 0.3;\n\
+        pointer-events:stroke;\n\
 }\n\
 /* Others */ \n\
 path.link-direct {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #000000;\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-indirect {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #000000;\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:8 8;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-binding {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #000000;\n\
 	stroke-width: 2px;\n\
 	stroke-dasharray:3 3;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-none {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #666;\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-ppi {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #0aa34a;\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-complex-formation {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: #0aa34a;\n\
 	stroke-width: 2px;\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-chemical-activation {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + blue + ";\n\
 	stroke-width: 2px;\n\
 	/*stroke-dasharray: 0,2 1;*/\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-chemical-inhibition {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + red + ";\n\
 	stroke-width: 2px;\n\
 	/*stroke-dasharray: 0,2 1;*/\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-smallmolecule-activation {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + blue + ";\n\
 	stroke-width: 2px;\n\
 	/*stroke-dasharray: 0,2 1;*/\n\
+        pointer-events:stroke;\n\
 }\n\
 path.link-smallmolecule-inhibition {\n\
 	z-index:10000;\n\
 	fill: #ffffff;\n\
-	fill-opacity: 0.01;\n\
+	fill-opacity: 0;\n\
 	stroke: " + red + ";\n\
 	stroke-width: 2px;\n\
 	/*stroke-dasharray: 0,2 1;*/\n\
+        pointer-events:stroke;\n\
 }\n\
 /* Nodes */ \n\
 .nonhuman {\n\
