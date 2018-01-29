@@ -333,6 +333,7 @@ text {\n\
 }\n\
 text.plaintext {\n\
 	fill: #000;\n\
+	font-family:Helvetica;\n\
 	paint-order:stroke;\n\
 	stroke: #fff;\n\
 	stroke-width: 2px;\n\
@@ -340,6 +341,7 @@ text.plaintext {\n\
 }\n\
 text.scoretext {\n\
 	fill: black;\n\
+	font-family:Helvetica;\n\
 	paint-order:stroke;\n\
 	stroke: #fff;\n\
 	stroke-width: 1px;\n\
@@ -1960,6 +1962,7 @@ function savePathway(anchor,div) {
         text = text.replace("&lt;", "<").replace("&gt;", ">").replace(/&nbsp;/g, "");
 	text = text.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
 	text = text.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+	//text = text.replace(/paint\-order\:stroke;[\s\S]+?stroke\:[\s\S]+?stroke\-width\:[\s\S]+?;/mg,"");
         var svg_blob = new Blob([text], {'type': "image/svg+xml"});
         var url = URL.createObjectURL(svg_blob);
 	document.getElementById(anchor).href = url;
