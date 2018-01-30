@@ -1956,13 +1956,15 @@ function applyFilter(div, x, y, extra, signaling, hidetoolbar, preventOverlap) {
 
 }
 
-function savePathway(anchor,div) {
-	var fileName = "pathway.svg";
+function savePathway(anchor,div,pure=1) {
+	var fileName = "drawing";
+	if (pure==0) fileName+="_compatible.svg"; //For Illustrator compatibility
+	else fileName+="_pure.svg"; //Pure standard SVG
 	var text = document.getElementById(div).innerHTML.replace('<div>', '').replace('</div>', '');
         text = text.replace("&lt;", "<").replace("&gt;", ">").replace(/&nbsp;/g, "");
 	text = text.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
 	text = text.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
-	text = text.replace(/paint\-order\:stroke;[\s\S]+?stroke\:[\s\S]+?stroke\-width\:[\s\S]+?;/mg,"");
+	if (pure==0) text = text.replace(/paint\-order\:stroke;[\s\S]+?stroke\:[\s\S]+?stroke\-width\:[\s\S]+?;/mg,""); //Illustrator doesn't support text outline
         var svg_blob = new Blob([text], {'type': "image/svg+xml"});
         var url = URL.createObjectURL(svg_blob);
 	document.getElementById(anchor).href = url;
@@ -1971,6 +1973,8 @@ function savePathway(anchor,div) {
 
 function capture(div, w, h) {  // When exporting a graph a pop-up will contain a pure SVG to be saved
 	savePathway('download'+div, 'container'+div);
+	document.getElementById("download"+div).click();
+	savePathway('download'+div, 'container'+div,0);
 	document.getElementById("download"+div).click();
 }
 
