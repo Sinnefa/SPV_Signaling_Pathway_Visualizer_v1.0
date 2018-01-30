@@ -1049,14 +1049,14 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 	/* For details see path or complexes above */
 	textEdges[div] = svg[div].selectAll("g")
 		.data(forceArray[div].links())
-		.enter().append("svg:g").append("text")
-		.attr("class", "scoretext");
+		.enter().append("svg:g").append("text");
 
 	textEdges[div].append('textPath')
 		.attr('xlink:href', function (d, i) {
 				return '#'+d.source.id.replace(":","") + "" + d.target.id.replace(":","")+"edge"
 			})
 		.attr("startOffset", "50%")
+		.attr("class", "scoretext")
 		.attr("id", function (l) {
 				return l.source.id.replace(":","") + "-" + l.target.id.replace(":","") + "-score";
 			})
@@ -1962,7 +1962,7 @@ function savePathway(anchor,div) {
         text = text.replace("&lt;", "<").replace("&gt;", ">").replace(/&nbsp;/g, "");
 	text = text.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
 	text = text.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
-	//text = text.replace(/paint\-order\:stroke;[\s\S]+?stroke\:[\s\S]+?stroke\-width\:[\s\S]+?;/mg,"");
+	text = text.replace(/paint\-order\:stroke;[\s\S]+?stroke\:[\s\S]+?stroke\-width\:[\s\S]+?;/mg,"");
         var svg_blob = new Blob([text], {'type': "image/svg+xml"});
         var url = URL.createObjectURL(svg_blob);
 	document.getElementById(anchor).href = url;
