@@ -552,7 +552,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 				<tr>\n\
 				<td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;margin-left:5px;height:25px;width:25px;padding:0px;" onclick="zoom[\'' + div + '\'].scale(1).translate([0, 0]);reset(forceArray[\'' + div + '\'],\'' + div + '\',w,h,\'' + extra + '\','+signaling+',' + hidetoolbar + ','+preventOverlap+','+ccx+','+ccy+','+cellBody+');"><img alt="Reset layout" title="Reset layout" src="' + baseurl + '/refresh.png" border="0"/></button></td>\n\
 				<td><button style="cursor:pointer;background-color: Gainsboro;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="capture(\'' + div + '\',w,' + (h - topMenuHeight) + ')"><img alt="Save network" title="Save network" src="' + baseurl + '/camera.png" border="0"/></button></td>\n\
-				<td><a href="" id="download'+div+'" download="pathway.svg"></a></td>\n\
+				<td width="0px"><a href="" style="width:0px;padding:0px;margin:0px" id="download'+div+'" download="pathway.svg"></a></td>\n\
 				<td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="exportNetwork(\'' + div + '\');"><img alt="Export network" title="Export network" src="' + baseurl + '/export.png" border="0"/></button></td>\n\
 				<td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="toggleScores(\''+div+'\')"/><img alt="Export network" title="Toggle scores" src="' + baseurl + '/score.png" border="0"/></button></td>\n\
 				<td><button style="cursor:pointer;background-color: Gainsboro ;border-color: lightgray;border-radius: 3px 3px 3px 3px;border-style: solid;border-width: 1px;margin: 1px;height:25px;width:25px;padding:0px;" onclick="hideLegend(\'' + div + '\')"><img alt="Toggle legend" title="Toggle legend" src="' + baseurl + '/legend.png" border="0"/></button></td>\n\
@@ -595,7 +595,7 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 						<option value="'+startingCharge*2+'">Relaxed</option>\n\
 					 </select>\n\
 				</td>\n\
-				<td width="100%" align="right"><a target="_blank" href="https://github.com/Sinnefa/SPV_Signaling_Pathway_Visualizer_v1.0" style="text-decoration:none;"><font color="white">SPV</font></a>&nbsp;</td>\n\
+				<td width="100%" align="right"><a target="_blank" style="background-color:rgba(0, 0, 0, 0);" href="https://github.com/Sinnefa/SPV_Signaling_Pathway_Visualizer_v1.0" style="text-decoration:none;"><font color="white">SPV</font></a>&nbsp;</td>\n\
 				</tr>\n\
 				</table>\n\
 			</div>\n\
