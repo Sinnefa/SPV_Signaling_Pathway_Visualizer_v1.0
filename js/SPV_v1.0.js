@@ -1704,7 +1704,7 @@ var actionOut2 = '$("#infoEdge").hide();';
 document.write("\n\
 	<script type=\"text/javascript\" src=\"" + baseurl + "/jquery.mousewheel.js\"></script>\n\
 	<script type=\"text/javascript\" src=\"" + baseurl + "/jquery.jscrollpane.min.js\"></script>\n\
-	<script type=\"text/javascript\" src=\"http://d3js.org/d3.v3.min.js\"></script>\n\
+	<script type=\"text/javascript\" src=\"https://d3js.org/d3.v3.min.js\"></script>\n\
 	<script type=\"text/javascript\" src=\"" + baseurl + "/fixOnMouseOut.js\"></script>\n\
 	<div id=\"info\"\n\
 		onmouseout=\"fixOnMouseOut(this, event, actionOut);\"\n\
