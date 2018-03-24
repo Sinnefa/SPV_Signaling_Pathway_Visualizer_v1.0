@@ -1,8 +1,12 @@
+
 # SPV - Signaling Pathway Visualizer v1.0
 
-##Citation
+## Citation
 
-Alberto Calderone, Gianni Cesareni; SPV: a JavaScript Signaling Pathway Visualizer, Bioinformatics, 2018
+In any work making use of SPV please cite the following paper
+
+SPV: a JavaScript Signaling Pathway Visualizer, Bioinformatics, 2018
+
 <a href="https://doi.org/10.1093/bioinformatics/bty188">Link to paper</a>
 
 ## Overview
