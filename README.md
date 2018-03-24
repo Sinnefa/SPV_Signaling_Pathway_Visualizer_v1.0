@@ -1,5 +1,10 @@
 # SPV - Signaling Pathway Visualizer v1.0
 
+##Citation
+
+Alberto Calderone, Gianni Cesareni; SPV: a JavaScript Signaling Pathway Visualizer, Bioinformatics, 2018
+<a href="https://doi.org/10.1093/bioinformatics/bty188">Link to paper</a>
+
 ## Overview
 This is a Javascript library build on top of D3.js to visualize molecular interactions with particular attention to signaling pathways.
 
