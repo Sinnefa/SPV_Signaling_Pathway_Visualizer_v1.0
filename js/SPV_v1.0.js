@@ -862,7 +862,15 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 				return "url('#" + str.substring(index, str.length) + "')";
 			}
 		})
-		.on("click", clickEdge); // Adding an edge click listener
+		.on("click", clickEdge) // Adding an edge click listener
+		.on({ // Pointer cursor for edges
+			"mouseover": function(d) {
+				d3.select(this).style("cursor", "pointer"); 
+			},
+			"mouseout": function(d) {
+				d3.select(this).style("cursor", "default"); 
+			}
+		});
 
 	var complexes = svg[div].append("svg:g").selectAll("circle") // Selecting all circles
 		.data(forceArray[div].nodes().filter(function (d) { // Filtering only complexes
