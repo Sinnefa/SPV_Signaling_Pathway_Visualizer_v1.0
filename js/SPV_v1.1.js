@@ -1056,10 +1056,13 @@ function initGraph(links_external, node_labels, edge_labels, div, x, y, extra, s
 	/* Configuring labels graphics */
 	/* For details see path or complexes above */
 	textEdges[div] = svg[div].selectAll("g")
-		.data(forceArray[div].links())
-		.enter().append("svg:g").append("text");
-
-	textEdges[div].append('textPath')
+                .data(forceArray[div].links().filter(function(d) {
+                                        return d;
+                                }
+                        ),function(d,i) {return d+i;}
+                )
+                .enter().append("svg:g")
+                .append("text").append('textPath')
 		.attr('xlink:href', function (d, i) {
 				return '#'+d.source.id.replace(":","") + "" + d.target.id.replace(":","")+"edge"
 			})
